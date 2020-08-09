@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2>NMS Chatbot Management system</h2>
+  <p>From here you can view and edit configuration:</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th style="width:20%">Member</th>
+        <th style="width:80%">Content</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for user in users %}
+      <tr>
+        <td>{{event.id}}</td>
+        <td>
+            <b>user_id</b>: {{user.user_id}}<br>
+            <b>name</b>: {{user.name}}<br>
+            <b>phone_number</b>: {{user.phone_number}}<br>
+            <b>email</b>: {{user.email}}<br>
+          </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+{% endblock %}
+{% block pagination %}
+<div class="container">
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+</div>
+  {% endblock %}

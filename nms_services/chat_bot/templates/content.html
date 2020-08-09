@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h2>NMS Chatbot Management system</h2>
+    <p>From here you can view and edit configuration:</p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th style="width:20%">{{file_name}}</th>
+            <th style="width:80%;word-break: break-word;">Content</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td></td>
+            <td style="word-break: break-word;max-width:600px;">
+                <article>
+                    <textarea id="temp" style="display: none;">{{file_content}}</textarea>
+                    <div id="code"></div>
+                </article>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="static/plugin/codemirror/lib/codemirror.css">
+<style>.CodeMirror { border-top: 2px solid #ddd; border-bottom: 1px solid #ddd; height: 800px;}</style>
+
+{% endblock %}
+{% block header_script %}
+<script src="static/plugin/codemirror/lib/codemirror.js"></script>
+<script src="static/plugin/codemirror/mode/yaml/yaml.js"></script>
+{% endblock %}
+{% block footer_script %}
+
+<script>
+        window.onload = function () {
+            var txt = $("#temp").val();
+            editor = CodeMirror(document.getElementById("code"), {
+                lineNumbers:true,
+                readOnly:false,
+                lineWrapping:true,
+                fixedGutter:true,
+                extraKeys: { "Ctrl-Space": "autocomplete" },
+                // value: document.documentElement.innerHTML,
+                value:txt
+            });
+        };
+</script>
+
+{% endblock %}

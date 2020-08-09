@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link type="image/x-icon" rel="shortcut icon" href="https://nms.com.vn/wp-content/themes/nms/images/favicon.ico">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    <script src="static/jquery-3.2.1.slim.min.js"></script>
+    <script src="static/popper.min.js"></script>
+    <script src="static/bootstrap.min.js"></script>
+    <!--    <link-->
+    <title>NMS Chatbot Management System</title>
+    {% block css %}{% endblock %}
+    {% block header_script %}{% endblock %}
+
+
+</head>
+<body>
+<!--<div class="container-fluid">-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+            <img src="https://nms.com.vn/wp-content/themes/nms/images/logo.png" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!--    <div class="collapse navbar-collapse" id="navbarNav">-->
+            <ul class="navbar-nav mr-auto">
+                <!--        <ul class="navbar-nav">-->
+                <li class="nav-item{{active_config}}">
+                    <a class="nav-link" href="/config">Config <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item{{active_nlu}}">
+                    <a class="nav-link" href="/nlu">Nlu</a>
+                </li>
+                <li class="nav-item{{active_stories}}">
+                    <a class="nav-link" href="/stories">Stories</a>
+                </li>
+                <li class="nav-item{{active_domain}}">
+                    <a class="nav-link" href="domain">Domain</a>
+                </li>
+                <li class="nav-item{{active_credentials}}">
+                    <a class="nav-link" href="/credentials">Credentials</a>
+                </li>
+                <li class="nav-item{{active_endpoints}}">
+                    <a class="nav-link" href="/endpoints">Endpoints</a>
+                </li>
+                <li class="nav-item{{active_tracker}}">
+                    <a class="nav-link" href="/tracker">Tracker</a>
+                </li>
+                <li class="nav-item{{active_member}}">
+                    <a class="nav-link" href="/member">Member</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+<!--</div>-->
+<div style="min-height:800px">
+    {% block content %}{% endblock %}
+    {% block pagination %} {% endblock %}
+</div>
+
+<footer class="page-footer font-small blue pt-4" style="background-color:#f8f9fa">
+    <div class="container-fluid text-center text-md-left">
+        <div class="row">
+            <div class="col-md-6 mt-md-0 mt-3">
+                <h5 class="text-uppercase">NMS chatbot</h5>
+                <p></p>
+            </div>
+            <hr class="clearfix w-100 d-md-none pb-3">
+            <div class="col-md-3 mb-md-0 mb-3">
+            </div>
+            <div class="col-md-3 mb-md-0 mb-3">
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://nms.com.vn/"> nms.com.vn</a>
+    </div>
+
+</footer>
+{% block footer_script %}{% endblock %}
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+</body>
+</html>

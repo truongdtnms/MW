@@ -11,5 +11,6 @@ urlpatterns = [
     path('endpoints', views.endpoints, name='endpoints'),
     path('tracker', views.EventsListView.as_view(), name='tracker'),
     path('member', views.UserListView.as_view(), name='member'),
-    path('status', views.status, name='status')
+    path('status', views.status, name='status'),
+    path('training', views.training, name='training')
 ]

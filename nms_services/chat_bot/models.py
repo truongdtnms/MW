@@ -31,3 +31,16 @@ class User(models.Model):
     class Meta:
         managed = False
         db_table = 'user'
+
+class Textuser(models.Model):
+    text_user = models.CharField(primary_key=True, max_length=1000)
+    timestamp = models.FloatField(blank=True, null=True)
+    entity = models.CharField(max_length=10000, blank=True, null=True)
+    intent = models.CharField(max_length=10000, blank=True, null=True)
+
+    def intent_dict(self):
+        import json
+        return json.loads(self.intent)
+    class Meta:
+        managed = False
+        db_table = 'TextUser'

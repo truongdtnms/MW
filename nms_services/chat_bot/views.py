@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import yaml
 import os
 
-BASE_PATH = '/home/kehanhcode/Desktop/chatbot_bds'
+BASE_PATH = '/home/truongdt/Desktop/chatbot'
 BASE_URL_API = 'http://localhost:5005'
 
 # Create your views here.
@@ -134,3 +134,9 @@ class UserListView(generic.ListView):
         context.update(self.extra_context)
         return context
 
+def training(request):
+    from .models import Textuser
+    textusers = Textuser.objects.all()
+    context = {"text_users": textusers}
+    print(type(textusers[0].intent_dict()))
+    return render(request, 'training.html', context=context)

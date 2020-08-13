@@ -21,14 +21,17 @@ def status(request):
     import requests
     url_version = BASE_URL_API + '/version'
     url_status = BASE_URL_API + '/status'
-    response = requests.request("GET", BASE_URL_API)
-    status_code = response.status_code
-    if status_code == 200:
-        r_version = requests.request("GET", url_version)
-        r_status = requests.request("GET", url_status)
-        context = {"file_content": '\n'.join(('Server is online', r_version.text, r_status.text))}
-    else:
-        context = 'Server is offline'
+    try:
+        response = requests.request("GET", BASE_URL_API)
+        status_code = response.status_code
+        if status_code == 200:
+            r_version = requests.request("GET", url_version)
+            r_status = requests.request("GET", url_status)
+            context = {"file_content": '\n'.join(('Server is online', r_version.text, r_status.text))}
+        else:
+            context = {"file_content": 'Server is offline'}
+    except:
+        context = {"file_content": 'Server is offline'}
     return render(request, 'status.html', context=context)
 
 def config(request):

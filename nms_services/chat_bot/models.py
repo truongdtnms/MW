@@ -44,3 +44,18 @@ class Textuser(models.Model):
     class Meta:
         managed = False
         db_table = 'TextUser'
+
+class Intent(models.Model):
+    name = models.CharField(primary_key=True, max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'intent'
+
+class Nlu(models.Model):
+    intent_name = models.ForeignKey(Intent, on_delete=models.CASCADE)
+    example = models.CharField(max_length=1000)
+
+    class Meta:
+        managed = False
+        db_table = 'nlu'

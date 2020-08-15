@@ -12,5 +12,6 @@ urlpatterns = [
     path('tracker', views.EventsListView.as_view(), name='tracker'),
     path('member', views.UserListView.as_view(), name='member'),
     path('status', views.status, name='status'),
-    path('training', views.training, name='training')
+    path('training', views.training, name='training'),
+    path('intent', views.intent, name='intent')
 ]

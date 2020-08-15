@@ -16,7 +16,8 @@ def read_file(file_name):
 
 def home(request):
     return render(request, 'home.html')
-
+def intent(request):
+    return render(request, 'intent.html')
 def status(request):
     import requests
     url_version = BASE_URL_API + '/version'

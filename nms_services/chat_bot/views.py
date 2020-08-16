@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import yaml
 import os
+from django.views.decorators.csrf import csrf_exempt
 
-BASE_PATH = '/home/truongdt/Desktop/chatbot'
+BASE_PATH = '/home/kehanhcode/Desktop/chatbot_bds'
 BASE_URL_API = 'http://localhost:5005'
 
 # Create your views here.
@@ -144,3 +145,23 @@ def training(request):
     context = {"text_users": textusers}
     print(type(textusers[0].intent_dict()))
     return render(request, 'training.html', context=context)
+
+import re
+def is_validate(data, type=None):
+    prog = re.compile(r'[^\w ]+')
+    if len(prog.findall(data)) > 0:
+        return False
+    if type == 'intent':
+        prog = re.compile(r'[\W]+')
+        if len(prog.findall(data)) > 0 or len(data) > 100:
+            return False
+    return True
+from .models import Intent
+@csrf_exempt
+def create_intent(request):
+    data = request.body.decode()
+    if not is_validate(data, type='intent'):
+        return HttpResponse('error')
+    new_intent = Intent(data)
+    new_intent.save()
+    return HttpResponse('success')

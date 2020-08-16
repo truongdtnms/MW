@@ -48,6 +48,8 @@ class Textuser(models.Model):
 class Intent(models.Model):
     name = models.CharField(primary_key=True, max_length=100)
 
+    def __init__(self, name):
+        self.name = name
     class Meta:
         managed = False
         db_table = 'intent'

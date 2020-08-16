@@ -3,9 +3,22 @@
 <link rel="stylesheet" href="static/intent.css">
 {% endblock %}
 {% block header_script %}
+<script src="static/jquery-3.2.1.min.js"></script>
 <script src="static/intent.js"></script>
 {% endblock %}
 {% block content %}
-
+<div class="container">
+    <div>
+        <input id="input-intent" placeholder="Intent Name" class="" type="text">
+        <button id="btn-create-intent" class="">Create Intent</button>
+    </div>
+    <div>
+        <input id="input-example" placeholder="Example" class="" type="text">
+        <button id="btn-create-example" class="">Create Example</button>
+    </div>
+    <div>
+        <input class="" disabled="disabled" value="example 1">
+        <button class="">Delete</button>
+    </div>
+</div>
 {% endblock %}
-

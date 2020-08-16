@@ -5,6 +5,9 @@
     background-color: white;
     border: 1px solid darkgray;
 }
+.message {
+  overflow: auto;
+}
 
 /* The search field */
 #myInput {
